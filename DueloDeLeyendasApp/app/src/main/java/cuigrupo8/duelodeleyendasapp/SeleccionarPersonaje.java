@@ -74,13 +74,11 @@ public class SeleccionarPersonaje extends AppCompatActivity {
         siguiente.putExtra("especialidades", personajeAndroid.getEspecialidades());
         siguiente.putExtra("debilidades", personajeAndroid.getDebilidades());
         siguiente.putExtra("mejorPosicion", personajeAndroid.getMejorPosicion());
-        siguiente.putExtra("imagen", personajeAndroid.getImagen());
         siguiente.putExtra("nombreDePersonaje", personajeAndroid.getNombre());
         siguiente.putStringArrayListExtra("estadisticas", personajeAndroid.getEstadisticas());
         startActivity(siguiente);
     }
     private DueloService createDueloService() {
-        //MMM código repetido, habría que modificar esto no?
         //String SERVER_IP = "10.0.2.2"; //esta ip se usa para comunicarse con mi localhost en el emulador de Android Studio
         String SERVER_IP_GENY = "192.168.1.7";//esta ip se usa para comunicarse con mi localhost en el emulador de Genymotion
         String API_URL = "http://"+ SERVER_IP_GENY +":8000";

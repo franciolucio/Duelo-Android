@@ -9,18 +9,16 @@ import java.util.List;
 public class PersonajeAndroid {
 
     public String nombre;
-    public String imagen;
     public String especialidades;
     public String debilidades;
     public String mejorPosicion;
     public List<String> estadisticas;
 
-    public PersonajeAndroid(String nombre, String especialidades, String debilidades, String mejorPosicion, String imagen, List<String> estadisticas) {
+    public PersonajeAndroid(String nombre, String especialidades, String debilidades, String mejorPosicion, List<String> estadisticas) {
         this.nombre = nombre;
         this.especialidades = especialidades;
         this.debilidades = debilidades;
         this.mejorPosicion = mejorPosicion;
-        this.imagen = imagen;
         this.estadisticas = estadisticas;
     }
 
@@ -36,9 +34,7 @@ public class PersonajeAndroid {
     public String getMejorPosicion() {
         return this.mejorPosicion;
     }
-    public String getImagen() {
-        return this.imagen;
-    }
+
     public ArrayList<String> getEstadisticas() {
         ArrayList<String> e = new ArrayList<String>();
         e.addAll(this.estadisticas);

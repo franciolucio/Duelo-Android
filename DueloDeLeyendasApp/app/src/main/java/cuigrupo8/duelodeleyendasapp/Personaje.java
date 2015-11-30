@@ -27,7 +27,6 @@ public class Personaje extends AppCompatActivity {
     public String especialidades;
     public String debilidades;
     public String mejorPosicion;
-    public String imagen;
     public ArrayList<String> estadisticas;
     private String nombreDePersonaje;
 
@@ -36,29 +35,28 @@ public class Personaje extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personaje);
         Intent intent = getIntent();
-        //fondo = (ImageView) findViewById(R.id.imagen);
-        //fondo.setImageResource(Integer.parseInt(imagen));
         this.nombreDePersonaje = intent.getStringExtra("nombreDePersonaje");
         this.especialidades = intent.getStringExtra("especialidades");
         this.debilidades = intent.getStringExtra("debilidades");
         this.mejorPosicion = intent.getStringExtra("mejorPosicion");
-        this.imagen = intent.getStringExtra("imagen");
         this.estadisticas = intent.getStringArrayListExtra("estadisticas");
         setTitle(nombreDePersonaje);
+        cambiarInformacionTextView(especialidades, R.id.especialidades);
+        cambiarInformacionTextView(debilidades, R.id.debilidades);
+        cambiarInformacionTextView(mejorPosicion, R.id.mejorPosicion);
+        cambiarInformacionImageView(nombreDePersonaje, R.id.imagen);
+    }
 
 
-        TextView tv1 = (TextView) findViewById(R.id.especialidades);
-        tv1.setText(especialidades);
+    private void cambiarInformacionTextView(String s, int x) {
+        TextView tv = (TextView) findViewById(x);
+        tv.setText(s);
+    }
 
-        TextView tv2 = (TextView) findViewById(R.id.debilidades);
-        tv2.setText(debilidades);
-
-        TextView tv3 = (TextView) findViewById(R.id.mejorPosicion);
-        tv3.setText(mejorPosicion);
-
-        ImageView iv= (ImageView) findViewById(R.id.imagen);
-
-        iv.setImageResource(R.drawable.acuaman);
+    private void cambiarInformacionImageView(String s, int x) {
+        int idDeImagen = getResources().getIdentifier((s).toLowerCase(), "drawable", this.getPackageName());
+        ImageView iv= (ImageView) findViewById(x);
+        iv.setImageResource(idDeImagen);
     }
 
     @Override

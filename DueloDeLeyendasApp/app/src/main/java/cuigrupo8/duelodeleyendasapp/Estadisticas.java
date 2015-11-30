@@ -25,26 +25,17 @@ public class Estadisticas extends AppCompatActivity {
         this.estadisticas = intent.getStringArrayListExtra("estadisticas");
         this.nombreDePersonaje = intent.getStringExtra("nombreDePersonaje");
         setTitle(nombreDePersonaje);
+        cambiarInformacionTextView(estadisticas.get(0), R.id.jugados);
+        cambiarInformacionTextView(estadisticas.get(1),R.id.ganados);
+        cambiarInformacionTextView(estadisticas.get(2),R.id.kills);
+        cambiarInformacionTextView(estadisticas.get(3),R.id.deads);
+        cambiarInformacionTextView(estadisticas.get(4),R.id.assists);
+        cambiarInformacionTextView(estadisticas.get(5),R.id.mejorPosicion2);
+        cambiarInformacionTextView(estadisticas.get(6),R.id.puntaje);
+    }
 
-        TextView tv1 = (TextView) findViewById(R.id.jugados);
-        tv1.setText(estadisticas.get(0));
-
-        TextView tv2 = (TextView) findViewById(R.id.ganados);
-        tv2.setText(estadisticas.get(1));
-
-        TextView tv3 = (TextView) findViewById(R.id.kills);
-        tv3.setText(estadisticas.get(2));
-
-        TextView tv4 = (TextView) findViewById(R.id.deads);
-        tv4.setText(estadisticas.get(3));
-
-        TextView tv5 = (TextView) findViewById(R.id.assists);
-        tv5.setText(estadisticas.get(4));
-
-        TextView tv6 = (TextView) findViewById(R.id.mejorPosicion2);
-        tv6.setText(estadisticas.get(5));
-
-        TextView tv7 = (TextView) findViewById(R.id.puntaje);
-        tv7.setText(estadisticas.get(6));
+    private void cambiarInformacionTextView(String s, int x) {
+        TextView tv = (TextView) findViewById(x);
+        tv.setText(s);
     }
 }

@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:focusableInTouchMode="false"
-    android:paddingTop="20dp">
+    android:paddingTop="20dp"
+    android:focusable="false">
 
     <TextView
         android:id="@+id/txtNombrePersonaje"
