@@ -31,12 +31,45 @@ import retrofit.client.Response;
 public class SeleccionarPersonaje extends AppCompatActivity {
 
     public List<PersonajeAndroid> personajes;
+    EditText inputSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccionar_personaje);
         obtenerPersonajesAndroid();
+
+        inputSearch= (EditText) findViewById(R.id.nombreDePersonajeBuscado);
+        inputSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
+                List<PersonajeAndroid> personajesFiltrados;
+                personajesFiltrados = filtrarPersonajes(cs);
+                agregarPersonajeAndroid(personajesFiltrados);
+            }
+
+            @Override
+            public void afterTextChanged(Editable arg0) {
+            }
+        });
+    }
+
+    private List<PersonajeAndroid> filtrarPersonajes(CharSequence cs){
+        if(cs == ""){
+            return personajes;
+        }
+        List<PersonajeAndroid> personajesFiltrados;
+        personajesFiltrados = new ArrayList<PersonajeAndroid>();
+        for(PersonajeAndroid p : personajes){
+            if(p.getNombre().startsWith(cs.toString())){
+                personajesFiltrados.add(p);
+            }
+        }
+        return personajesFiltrados;
     }
 
     private void obtenerPersonajesAndroid() {
@@ -67,8 +100,6 @@ public class SeleccionarPersonaje extends AppCompatActivity {
         });
     }
 
-    //Toast.makeText(getApplicationContext(), "Ha pulsado el item " + position, Toast.LENGTH_SHORT).show();
-
     private void informacionPersonaje(View view,PersonajeAndroid personajeAndroid) {
         Intent siguiente = new Intent(this,Personaje.class);
         siguiente.putExtra("especialidades", personajeAndroid.getEspecialidades());
@@ -78,9 +109,10 @@ public class SeleccionarPersonaje extends AppCompatActivity {
         siguiente.putStringArrayListExtra("estadisticas", personajeAndroid.getEstadisticas());
         startActivity(siguiente);
     }
+
     private DueloService createDueloService() {
         //String SERVER_IP = "10.0.2.2"; //esta ip se usa para comunicarse con mi localhost en el emulador de Android Studio
-        String SERVER_IP_GENY = "192.168.1.7";//esta ip se usa para comunicarse con mi localhost en el emulador de Genymotion
+        String SERVER_IP_GENY = "192.168.1.100";//esta ip se usa para comunicarse con mi localhost en el emulador de Genymotion
         String API_URL = "http://"+ SERVER_IP_GENY +":8000";
 
         RestAdapter restAdapter = new RestAdapter.Builder().setEndpoint(API_URL).build();

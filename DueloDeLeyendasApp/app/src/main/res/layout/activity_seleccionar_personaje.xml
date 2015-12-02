@@ -16,27 +16,14 @@
             android:paddingTop="10dp">
 
             <EditText
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:inputType="textNoSuggestions"
                 android:hint="Ingrese el personaje"
                 android:id="@+id/nombreDePersonajeBuscado"
-                android:layout_marginLeft="10dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="BUSCAR"
-                android:background="#cecccc"
-                android:id="@+id/button"
-                android:layout_gravity="top"
-                android:onClick="filtrarPersonajes"
-                android:textColor="#000000"
-                android:layout_marginRight="10dp"
-                android:textSize="16dp"
-                android:textAlignment="center"
-                android:textStyle="bold|italic" />
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
         </LinearLayout>
 
         <LinearLayout
